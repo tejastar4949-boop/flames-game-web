@@ -13,12 +13,17 @@
     <h1>🔥 FLAMES Game 🔥</h1>
     <p>Enter a pair of names to see the relationship:</p>
 
-    <input type="text" id="name1" placeholder="First Name" style="padding: 10px; margin: 5px;">
-    <input type="text" id="name2" placeholder="Second Name" style="padding: 10px; margin: 5px;">
+    <input type="text" id="name1" placeholder="First Name" style="padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid #ccc;">
+    <input type="text" id="name2" placeholder="Second Name" style="padding: 10px; margin: 5px; border-radius: 5px; border: 1px solid #ccc;">
     
-    <button id="btn" py-click="run_flames" style="padding: 10px 20px; cursor: pointer;">Calculate</button>
+    <br><br>
+    <button id="btn" py-click="run_flames" style="padding: 10px 20px; cursor: pointer; background-color: #ff4757; color: white; border: none; border-radius: 5px; font-weight: bold;">Calculate Result</button>
 
-    <h2 id="output" style="color: #ff4757; margin-top: 30px;"></h2>
+    <h2 id="output" style="color: #2f3542; margin-top: 30px; min-height: 40px;"></h2>
+
+    <footer style="margin-top: 50px; font-size: 0.9em; color: #747d8c;">
+        <p>Created by <strong>surya teja.s</strong></p>
+    </footer>
 
     <py-config>
         [[fetch]]
@@ -30,7 +35,6 @@
         from main import flames_game
 
         def run_flames(event):
-            # Grab names from the text boxes
             n1 = document.querySelector("#name1").value
             n2 = document.querySelector("#name2").value
             
@@ -38,10 +42,9 @@
                 document.querySelector("#output").innerText = "Please enter both names!"
                 return
 
-            # Run your logic from main.py
+            # This calls the logic from your main.py file
             result = flames_game(n1, n2)
             
-            # Display the result on the screen
             document.querySelector("#output").innerText = f"Result: {result}"
     </script>
 

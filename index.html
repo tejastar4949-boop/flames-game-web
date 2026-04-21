@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAMES Game</title>
+    
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; background-color: #f0f0f0; padding-top: 50px;">
+
+    <h1>🔥 FLAMES Game 🔥</h1>
+    <p>Enter a pair of names to see the relationship:</p>
+
+    <input type="text" id="name1" placeholder="First Name" style="padding: 10px; margin: 5px;">
+    <input type="text" id="name2" placeholder="Second Name" style="padding: 10px; margin: 5px;">
+    
+    <button id="btn" py-click="run_flames" style="padding: 10px 20px; cursor: pointer;">Calculate</button>
+
+    <h2 id="output" style="color: #ff4757; margin-top: 30px;"></h2>
+
+    <py-config>
+        [[fetch]]
+        files = ["main.py"]
+    </py-config>
+
+    <script type="py">
+        from pyscript import document
+        from main import flames_game
+
+        def run_flames(event):
+            # Grab names from the text boxes
+            n1 = document.querySelector("#name1").value
+            n2 = document.querySelector("#name2").value
+            
+            if not n1 or not n2:
+                document.querySelector("#output").innerText = "Please enter both names!"
+                return
+
+            # Run your logic from main.py
+            result = flames_game(n1, n2)
+            
+            # Display the result on the screen
+            document.querySelector("#output").innerText = f"Result: {result}"
+    </script>
+
+</body>
+</html>
